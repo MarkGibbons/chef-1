@@ -40,16 +40,19 @@ type Client struct {
 	BaseURL *url.URL
 	client  *http.Client
 
-	ACLs         *ACLService
-	Clients      *ApiClientService
-	Cookbooks    *CookbookService
-	DataBags     *DataBagService
-	Environments *EnvironmentService
-	Nodes        *NodeService
-	Principals   *PrincipalService
-	Roles        *RoleService
-	Sandboxes    *SandboxService
-	Search       *SearchService
+	ACLs          *ACLService
+	Clients       *ApiClientService
+	Cookbooks     *CookbookService
+	DataBags      *DataBagService
+	Environments  *EnvironmentService
+	Groups        *GroupService
+	Nodes         *NodeService
+	Organizations *OrganizationService
+	Principals    *PrincipalService
+	Roles         *RoleService
+	Sandboxes     *SandboxService
+	Search        *SearchService
+	Users         *UserService
 }
 
 // Config contains the configuration options for a chef client. This is Used primarily in the NewClient() constructor in order to setup a proper client object
@@ -150,16 +153,31 @@ func NewClient(cfg *Config) (*Client, error) {
 		},
 		BaseURL: baseUrl,
 	}
+	// association requests
 	c.ACLs = &ACLService{client: c}
 	c.Clients = &ApiClientService{client: c}
+	// containers
 	c.Cookbooks = &CookbookService{client: c}
+	// data
 	c.DataBags = &DataBagService{client: c}
 	c.Environments = &EnvironmentService{client: c}
+	// global end points
+	// groups  - There's a PR out there
+	c.Groups = &GroupService{client: c}
+	// license - global
 	c.Nodes = &NodeService{client: c}
+	// policies
+	// policies_groups
+	//! organizations - global
+	c.Organizations = &OrganizationService{client: c}
 	c.Principals = &PrincipalService{client: c}
 	c.Roles = &RoleService{client: c}
 	c.Sandboxes = &SandboxService{client: c}
 	c.Search = &SearchService{client: c}
+	// universe
+	// updated_since
+	// users - global
+	c.Users = &UserService{client: c}
 	return c, nil
 }
 
