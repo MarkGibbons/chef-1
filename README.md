@@ -79,6 +79,7 @@ improved, but is still an ongoing concern.
 |AJ Christensen |[@fujin](https://github.com/fujin)
 |Brad Beam      |[@bradbeam](https://github.com/bradbeam)
 |Kraig Amador   |[@bigkraig](https://github.com/bigkraig)
+|Mark Gibbons   |[@bigkraig](https://github.com/MarkGibbons)
 
 ## COPYRIGHT
 
