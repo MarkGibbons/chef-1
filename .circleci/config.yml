@@ -6,13 +6,13 @@ workflows:
   version: 2
   merge-to-master:
     jobs:
-      - build
-      - tag:
+      - test
+      - update_tag:
           filters:
             branches:
               only: master
 jobs:
-  build:
+  test:
     docker:
       # specify the version
       - image: circleci/golang:1.9
@@ -31,7 +31,7 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: env
       - run: ls && pwd
-   tag:
+   update_tag:
     docker:
       # specify the version
       - image: circleci/golang:1.9
