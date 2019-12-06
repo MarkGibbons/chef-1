@@ -6,9 +6,9 @@ workflows:
   merge-to-master:
     jobs:
       - build
-        filters:
-          branches:
-            only: /.*/  
+          filters:
+            branches:
+              only: /.*/  
 
 jobs:
   build:
