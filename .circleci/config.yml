@@ -12,7 +12,7 @@ workflows:
             - tester
           filters:
             branches:
-              only: /circleci/
+              only: /master/
 jobs:
   update_tag:
     docker:
