@@ -10,7 +10,7 @@ workflows:
       - update_tag:
           filters:
             branches:
-              only: master
+              only: /circleci/
 jobs:
   update_tag:
     docker:
@@ -25,9 +25,6 @@ jobs:
           fingerprints:
             - 35:45:41:ba:cf:3f:7f:d5:00:0f:11:6b:4d:c0:a1:90
       - checkout
-      # specify any bash command here prefixed with `run: `
-      - run: env
-      - run: ls && pwd
       - run: curl -s https://api.github.com/repos/pantheon-systems/autotag/releases/latest | grep browser_download | grep Linux | cut -d '"' -f 4 | xargs curl -o ./autotag -L && chmod 755 ./autotag
       - run: ./autotag
       - run: git push --tags origin
