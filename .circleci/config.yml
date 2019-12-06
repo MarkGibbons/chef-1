@@ -35,4 +35,4 @@ jobs:
       - run: ls && pwd
       - run: curl -s https://api.github.com/repos/pantheon-systems/autotag/releases/latest | grep browser_download | grep Linux | cut -d '"' -f 4 | xargs curl -o ./autotag -L && chmod 755 ./autotag
       - run: ./autotag
-      - run: git push --tags origin     - run: git push --tags origin
+      - run: git push --tags origin
