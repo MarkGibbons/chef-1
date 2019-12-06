@@ -10,9 +10,6 @@ workflows:
       - update_tag:
           requires:
             - tester
-          filters:
-            branches:
-              only: /master/
 jobs:
   update_tag:
     docker:
